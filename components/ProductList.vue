@@ -1,0 +1,92 @@
+<!-- <v-container>
+    <v-row no-gutters >
+      <v-col lg=4 cols=12>
+        <ProductCard
+         
+          v-for="Product in Products"
+          :key="Product.id"
+          :Product="Product"
+        />
+      </v-col>
+    </v-row>
+  </v-container> -->
+
+<template>
+  <!-- <v-container class="grey lighten-5">
+    <v-row>
+      <v-col cols="2" sm="6" md="4" class="d-flex child-flex" lg="4">
+        <ProductCard
+          class="ma-5"
+          v-for="Product in Products"
+          :key="Product.id"
+          :Product="Product"
+        ></ProductCard>
+      </v-col>
+    </v-row>
+  </v-container> -->
+
+  <v-sheet>
+    <v-slide-group v-model="model" center-active show-arrows>
+      <ProductCard
+        v-for="Product in Products"
+        :key="Product.id"
+        v-slot="{ active, toggle }"
+        class="ma-5"
+        :product="Product"
+        :color="active ? 'primary' : 'grey lighten-1'"
+        height="200"
+        width="100"
+        @click="toggle"
+      ></ProductCard>
+      <v-row class="fill-height" align="center" justify="center">
+        <v-scale-transition>
+          <v-icon
+            v-if="active"
+            color="dark"
+            size="48"
+            v-text="'mdi-close-circle-outline'"
+          ></v-icon>
+        </v-scale-transition>
+      </v-row>
+    </v-slide-group>
+  </v-sheet>
+</template>
+<script>
+import ProductCard from './ProductCard'
+
+export default {
+  name: 'ProductList',
+  components: {
+    ProductCard,
+  },
+
+  props: ['Product'],
+  computed: {
+    Products() {
+      return this.$store.state.Products
+    },
+  },
+
+  mounted() {
+    this.$store.dispatch('getProducts')
+  },
+
+  // created() {
+  //   axios.get("http://127.0.0.1:8000/api/store/" , {headers: {Authorization: `Bearer ${this.$store.state.accessToken}`} })
+  //   .then(response => {
+  //     this.$store.state.APIData = response.data;
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
+  // },
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+v-container {
+  position: relative;
+  right: 10%;
+}
+</style>
