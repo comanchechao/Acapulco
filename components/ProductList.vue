@@ -12,19 +12,6 @@
   </v-container> -->
 
 <template>
-  <!-- <v-container class="grey lighten-5">
-    <v-row>
-      <v-col cols="2" sm="6" md="4" class="d-flex child-flex" lg="4">
-        <ProductCard
-          class="ma-5"
-          v-for="Product in Products"
-          :key="Product.id"
-          :Product="Product"
-        ></ProductCard>
-      </v-col>
-    </v-row>
-  </v-container> -->
-
   <v-sheet>
     <v-slide-group v-model="model" center-active show-arrows>
       <ProductCard
@@ -50,6 +37,18 @@
       </v-row>
     </v-slide-group>
   </v-sheet>
+  <!-- <v-container class="grey lighten-5">
+    <v-row>
+      <v-col cols="2" sm="6" md="4" class="d-flex child-flex" lg="4">
+        <ProductCard
+          class="ma-5"
+          v-for="Product in Products"
+          :key="Product.id"
+          :Product="Product"
+        ></ProductCard>
+      </v-col>
+    </v-row>
+  </v-container> -->
 </template>
 <script>
 import ProductCard from './ProductCard'

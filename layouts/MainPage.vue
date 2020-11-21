@@ -1,15 +1,16 @@
 <template>
   <v-app>
-    <div class="pa-0 ma-0">
-      <h1 class="acapulco">Acapulco Design</h1>
-      <h2 class="h2-home">Limited custom handmade merchendise by</h2>
-    </div>
-
-    <v-img
-      class="home-background"
-      max-height="900"
-      src="/tabitha-turner--_bSa4Sn1Bs-unsplash.jpg"
-    ></v-img>
+    <v-main>
+      <div class="pa-0 ma-0">
+        <h1 class="acapulco">Acapulco Design</h1>
+        <h2 class="h2-home">Limited custom handmade merchendise by</h2>
+        <v-img
+          class="home-background"
+          max-height="900"
+          src="/tabitha-turner--_bSa4Sn1Bs-unsplash.jpg"
+        ></v-img>
+      </div>
+    </v-main>
   </v-app>
 </template>
 <!-- <div class="">

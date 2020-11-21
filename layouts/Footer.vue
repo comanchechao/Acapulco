@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="#00AE3A" shaped>
+  <v-footer color="#00AE3A">
     <v-row justify="center" no-gutters>
       <v-btn
         v-for="link in links"
@@ -14,7 +14,6 @@
         {{ new Date().getFullYear() }} — <strong>Acupulco Design</strong>
       </v-col>
     </v-row>
-    <Nuxt />
   </v-footer>
 </template>
 
