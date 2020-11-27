@@ -3,9 +3,9 @@
     <v-img style="height: 400px" :src="Product.image" alt />
     <div>
       <h4>
-        <router-link :to="{ name: 'Product', params: { id: Product.id } }">{{
+        <Nuxt-link :to="{ name: 'Product', params: { id: Product.id } }">{{
           Product.title
-        }}</router-link>
+        }}</Nuxt-link>
       </h4>
       <strong>${{ Product.price }}</strong>
       <p>{{ Product.description }}</p>

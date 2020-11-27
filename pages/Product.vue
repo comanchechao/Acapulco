@@ -6,7 +6,9 @@
 import ProductCard from '../components/ProductCard.vue'
 export default {
   components: { ProductCard },
-  props: ['id'],
+  props: {
+    id: Number,
+  },
 
   computed: {
     Product() {

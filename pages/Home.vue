@@ -3,7 +3,7 @@
     <Navbar />
     <MainPage />
     <ProductList />
-    <MiniCart />
+    <!-- <MiniCart /> -->
     <Footer />
   </v-app>
 </template>
@@ -14,7 +14,7 @@ import Navbar from '@/layouts/Navbar.vue'
 import MainPage from '@/layouts/MainPage.vue'
 import ProductList from '@/components/ProductList.vue'
 import Footer from '@/layouts/Footer.vue'
-import MiniCart from '../components/MiniCart.vue'
+// import MiniCart from '../components/MiniCart.vue'
 
 export default {
   name: 'Home',
@@ -23,7 +23,7 @@ export default {
     MainPage,
     ProductList,
     Footer,
-    MiniCart,
+    // MiniCart,
   },
 }
 </script>
