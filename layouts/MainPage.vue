@@ -1,17 +1,17 @@
 <template>
-  <v-app>
-    <v-main>
+  <v-content>
+    <v-container id="main">
       <div class="pa-0 ma-0">
         <h1 class="acapulco">Acapulco Design</h1>
         <h2 class="h2-home">Limited custom handmade merchendise by</h2>
-        <v-img
+        <!-- <v-img
           class="home-background"
           max-height="900"
           src="/tabitha-turner--_bSa4Sn1Bs-unsplash.jpg"
-        ></v-img>
+        ></v-img> -->
       </div>
-    </v-main>
-  </v-app>
+    </v-container>
+  </v-content>
 </template>
 <!-- <div class="">
 
@@ -36,11 +36,11 @@ export default {}
   font-family: sail;
   z-index: 1;
   font-size: 192px;
-  backdrop-filter: blur(4px);
-  color: #ffffff;
+  /* backdrop-filter: blur(4px); */
+  color: #e7e7de;
   position: absolute;
-  top: 30%;
-  left: 50%;
+  top: 20%;
+  left: 47%;
   transform: translate(-50%, -50%);
   text-align: center;
   line-height: 90%;
@@ -53,10 +53,14 @@ export default {}
   position: absolute;
   width: 764px;
   text-align: center;
-  top: 60%;
-  left: 50%;
+  top: 75%;
+  left: 49%;
   transform: translate(-50%, -50%);
-  color: #e7e7e7;
+  color: #e7e7de;
   line-height: 110%;
+}
+#main {
+  color: transparent;
+  padding: 20%;
 }
 </style>
