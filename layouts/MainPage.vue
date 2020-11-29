@@ -2,8 +2,16 @@
   <v-content>
     <v-container id="main">
       <div class="pa-0 ma-0">
-        <h1 class="acapulco">Acapulco Design</h1>
-        <h2 class="h2-home">Limited custom handmade merchendise by</h2>
+        <h1
+          class="acapulco animate__animated animate__jackInTheBox animate__delay-0.5s"
+        >
+          Acapulco Design
+        </h1>
+        <h2
+          class="h2-home animate__animated animate__flipInY animate__delay-1s"
+        >
+          Limited custom handmade merchendise by
+        </h2>
         <!-- <v-img
           class="home-background"
           max-height="900"
@@ -35,12 +43,12 @@ export default {}
 .acapulco {
   font-family: sail;
   z-index: 1;
-  font-size: 192px;
+  font-size: 130px;
   /* backdrop-filter: blur(4px); */
   color: #e7e7de;
   position: absolute;
   top: 20%;
-  left: 47%;
+  left: 8%;
   transform: translate(-50%, -50%);
   text-align: center;
   line-height: 90%;
@@ -53,8 +61,8 @@ export default {}
   position: absolute;
   width: 764px;
   text-align: center;
-  top: 75%;
-  left: 49%;
+  top: 65%;
+  left: 15%;
   transform: translate(-50%, -50%);
   color: #e7e7de;
   line-height: 110%;

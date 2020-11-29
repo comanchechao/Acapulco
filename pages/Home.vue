@@ -11,7 +11,7 @@
         ></component>
         <div v-show="ShowProducts == false" id="switch">
           <v-btn
-            class="animate__animated animate__jello animate__infinite"
+            class="indigo--text animate__animated animate__jello animate__infinite"
             color="#fadcac"
             @click=";(component = 'ProductList'), (ShowProducts = true)"
             >View Products</v-btn
