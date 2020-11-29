@@ -45,9 +45,9 @@ export default {}
   z-index: 1;
   font-size: 130px;
   /* backdrop-filter: blur(4px); */
-  color: #e7e7de;
+  color: #fadcac;
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: 8%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -61,10 +61,10 @@ export default {}
   position: absolute;
   width: 764px;
   text-align: center;
-  top: 65%;
+  top: 50%;
   left: 15%;
   transform: translate(-50%, -50%);
-  color: #e7e7de;
+  color: #fadcac;
   line-height: 110%;
 }
 #main {

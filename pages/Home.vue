@@ -1,6 +1,9 @@
 <template>
   <v-app id="main">
-    <Navbar id="navbar" />
+    <Navbar
+      id="navbar"
+      class="animate__animated animate__rollIn animate__delay-0.5s"
+    />
     <v-spacer></v-spacer>
     <v-content>
       <v-container>
@@ -11,6 +14,7 @@
         ></component>
         <div v-show="ShowProducts == false" id="switch">
           <v-btn
+            id="switch-button"
             class="indigo--text animate__animated animate__jello animate__infinite"
             color="#fadcac"
             @click=";(component = 'ProductList'), (ShowProducts = true)"
@@ -86,5 +90,8 @@ export default {
 #bottomsheet {
   position: relative;
   bottom: -25%;
+}
+#switch-button {
+  color: white;
 }
 </style>
