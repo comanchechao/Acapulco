@@ -1,17 +1,25 @@
 <template>
-  <v-app>
-    <v-main>
+  <v-content>
+    <v-container id="main">
       <div class="pa-0 ma-0">
-        <h1 class="acapulco">Acapulco Design</h1>
-        <h2 class="h2-home">Limited custom handmade merchendise by</h2>
-        <v-img
+        <h1
+          class="acapulco animate__animated animate__jackInTheBox animate__delay-0.5s"
+        >
+          Acapulco Design
+        </h1>
+        <h2
+          class="h2-home animate__animated animate__flipInY animate__delay-1s"
+        >
+          Limited custom handmade merchendise by
+        </h2>
+        <!-- <v-img
           class="home-background"
           max-height="900"
           src="/tabitha-turner--_bSa4Sn1Bs-unsplash.jpg"
-        ></v-img>
+        ></v-img> -->
       </div>
-    </v-main>
-  </v-app>
+    </v-container>
+  </v-content>
 </template>
 <!-- <div class="">
 
@@ -35,12 +43,12 @@ export default {}
 .acapulco {
   font-family: sail;
   z-index: 1;
-  font-size: 192px;
-  backdrop-filter: blur(4px);
-  color: #ffffff;
+  font-size: 130px;
+  /* backdrop-filter: blur(4px); */
+  color: #fadcac;
   position: absolute;
-  top: 30%;
-  left: 50%;
+  top: 10%;
+  left: 8%;
   transform: translate(-50%, -50%);
   text-align: center;
   line-height: 90%;
@@ -53,10 +61,14 @@ export default {}
   position: absolute;
   width: 764px;
   text-align: center;
-  top: 60%;
-  left: 50%;
+  top: 50%;
+  left: 15%;
   transform: translate(-50%, -50%);
-  color: #e7e7e7;
+  color: #fadcac;
   line-height: 110%;
+}
+#main {
+  color: transparent;
+  padding: 20%;
 }
 </style>
