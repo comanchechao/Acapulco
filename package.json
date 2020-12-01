@@ -15,6 +15,7 @@
     "@nuxtjs/axios": "^5.12.2",
     "animate.css": "^4.1.1",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
     "nuxt": "^2.14.6",
     "vue-pose": "^0.5.1",
     "vue-post": "^0.2.1"
