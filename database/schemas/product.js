@@ -47,6 +47,9 @@ let productSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: true
-  }
+  },
+
+}, {
+  timestamps: true
 });
 module.exports = productSchema;
