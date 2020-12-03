@@ -1,10 +1,17 @@
 const express = require('express')
 const consola = require('consola')
+const mongoose = require('mongoose')
 const {
   Nuxt,
   Builder
 } = require('nuxt')
 const app = express()
+// Connecting to database 
+
+mongoose.connect('mongodb+srv://kesler:payamone@cluster0.yhv0k.mongodb.net/Acapulco?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then((result) => console.log('connected to db'));
 
 
 //Middleware api express routes
