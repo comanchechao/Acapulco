@@ -15,7 +15,7 @@ mongoose.connect('mongodb+srv://kesler:payamone@cluster0.yhv0k.mongodb.net/Acapu
 
 
 //Middleware api express routes
-const serverAPI = require('../server-middleware/api')
+const serverAPI = require('../middleware/api')
 app.use(serverAPI)
 
 // Import and Set Nuxt.js options

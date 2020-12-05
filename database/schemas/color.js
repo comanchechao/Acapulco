@@ -1,20 +1,23 @@
-import mongoose from 'mongoose';
-import validator from 'validator';
+import mongoose from 'mongoose'
+import validator from 'validator'
 
-let colorSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const colorSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    hexValue: {
+      type: String,
+      required: true,
+      validate: (value) => {
+        return validator.isHexColor(value)
+      },
+    },
   },
-  hexValue: {
-    type: String,
-    required: true,
-    validate: (value) => {
-      return validator.isHexColor(value)
-    }
+  {
+    _id: false,
   }
-}, {
-  _id: false
-});
+)
 
-module.exports = colorSchema;
+module.exports = colorSchema

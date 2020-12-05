@@ -21,7 +21,7 @@ export default {
     link: [{
       rel: 'icon',
       type: 'image/x-icon',
-      href: '/favicon.ico'
+      href: '/sketch-1605558670823.ico'
     }],
   },
 
