@@ -1,14 +1,14 @@
 <template>
   <v-content>
     <v-container id="main">
-      <div class="pa-0 ma-0">
+      <div class="pa-0 ma-0" :class="{ animate__zoomOut: CartDisplay }">
         <h1
-          class="acapulco animate__animated animate__jackInTheBox animate__delay-0.5s"
+          class="acapulco animate__animated animate__jackInTheBox animate__delay-1s"
         >
           Acapulco Design
         </h1>
         <h2
-          class="h2-home animate__animated animate__flipInY animate__delay-1s"
+          class="h2-home animate__animated animate__flipInY animate__delay-0.5s"
         >
           Limited custom handmade merchendise by
         </h2>
@@ -28,7 +28,13 @@
     </div> -->
 
 <script>
-export default {}
+export default {
+  computed: {
+    CartDisplay() {
+      return this.$store.state.CartDisplay
+    },
+  },
+}
 </script>
 
 <style scoped>
