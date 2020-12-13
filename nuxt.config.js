@@ -1,4 +1,10 @@
 import colors from 'vuetify/es5/util/colors'
+const path = require('path')
+
+require('dotenv').config({
+  silent: true,
+  path: process.env.NODE_ENV === 'production' ? '.prod.env' : '.dev.env'
+})
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -27,6 +33,10 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
+  env: {
+    HOST: process.env.HOST,
+    PORT: process.env.PORT
+  },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
@@ -88,8 +98,7 @@ export default {
       })
     }
   },
-}
-
-router: {
-  middleware: ['auth']
+  serverMiddleware: [
+    '@/server/index.js',
+  ]
 }

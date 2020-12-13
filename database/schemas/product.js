@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 import validator from 'validator'
+import customizationOptions from '@/database/schemas/customizationOptions.js'
 import weightSchema from './weight'
 import priceSchema from './price'
-import customizationOptions from './customizationOptions'
 
 const productSchema = new mongoose.Schema(
   {

@@ -1,156 +1,132 @@
 <template>
   <div>
-    <Sidebar :pose="isVisible">
-      <v-navigation-drawer
-        v-model="drawer"
-        d-flex-column
-        temporary
+    <v-navigation-drawer
+      v-model="drawer"
+      d-flex-column
+      temporary
+      app
+      src="/cody-mclain-Dq5P6eWZXNY-unsplash.jpg"
+      width="20%"
+    >
+      <v-list>
+        <v-spacer></v-spacer>
+        <v-list-item>
+          <v-app-bar-nav-icon
+            app
+            class="white--text"
+            @click="drawer = !drawer"
+          ></v-app-bar-nav-icon>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img src="/pineapple-supply-co-NgDapgpAiTE-unsplash.jpg"></v-img>
+          </v-list-item-avatar>
+        </v-list-item>
+        <v-list-item v-for="category in categories" :key="category.title">
+          <v-list-item-content>
+            <v-btn>
+              <span>
+                {{ category.title }}
+              </span>
+            </v-btn>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar
+      justify-center
+      color="transparent"
+      width="100%"
+      fixed
+      elevation="0"
+    >
+      <v-app-bar-nav-icon
         app
-        src="/cody-mclain-Dq5P6eWZXNY-unsplash.jpg"
-        width="20%"
-      >
-        <v-list>
-          <v-spacer></v-spacer>
-          <v-list-item>
-            <v-app-bar-nav-icon
-              app
-              class="white--text"
-              @click="drawer = !drawer"
-            ></v-app-bar-nav-icon>
-          </v-list-item>
-          <v-list-item>
-            <v-list-item-avatar>
-              <v-img
-                src="/pineapple-supply-co-NgDapgpAiTE-unsplash.jpg"
-              ></v-img>
-            </v-list-item-avatar>
-          </v-list-item>
-          <v-list-item v-for="category in categories" :key="category.title">
-            <v-list-item-content>
-              <v-btn>
-                <span>
-                  {{ category.title }}
-                </span>
-              </v-btn>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-    </Sidebar>
-    <Box class="box" :pose="isVisible ? 'hidden' : 'visible'">
-      <v-app-bar
-        justify-center
-        color="transparent"
-        width="100%"
-        fixed
-        elevation="0"
-      >
-        <v-app-bar-nav-icon
-          app
-          class="white--text"
-          @click="drawer = !drawer"
-        ></v-app-bar-nav-icon>
-        <!-- <v-toolbar-title class=" black--text text-uppercase">
+        class="white--text"
+        @click="drawer = !drawer"
+      ></v-app-bar-nav-icon>
+      <!-- <v-toolbar-title class=" black--text text-uppercase">
         <span>Acupulco </span>
         <span class="font-weight-light">Design</span>
       </v-toolbar-title> -->
-        <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
 
-        <v-menu transition="slide-y-transition" bottom open-on-hover>
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              x-large
-              v-bind="attrs"
-              color="transparent"
-              class="mx-2"
-              v-on="on"
-            >
-              <span class="white--text"> Explore </span>
-            </v-btn>
+      <v-menu transition="slide-y-transition" bottom open-on-hover>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            x-large
+            v-bind="attrs"
+            color="transparent"
+            class="mx-2"
+            v-on="on"
+          >
+            <span class="white--text"> Explore </span>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item v-for="category in categories" :key="category.title">
+            <v-list-item-title>{{ category.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <div v-if="$auth.loggedIn">
+        <v-btn dark large color="transparent">
+          <v-icon> mdi-account-cowboy-hat </v-icon>
+        </v-btn>
+      </div>
+      <div v-else>
+        <v-btn fab large color="transparent">
+          <v-icon color="white">mdi-shopping-outline</v-icon>
+          <span v-for="item in Cart" :key="item.Product.id">
+            {{ item.Product.title }}
+          </span>
+        </v-btn>
+        <v-menu transition="slide-y-transition" bottom>
+          <template v-slot:activator="{ on: menu, attrs }">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on: tooltip }">
+                <v-btn
+                  v-bind="attrs"
+                  dark
+                  large
+                  fab
+                  color="transparent"
+                  v-on="{ ...tooltip, ...menu }"
+                >
+                  <v-icon large>mdi-login-variant</v-icon>
+                </v-btn>
+              </template>
+              <span>Join Us!</span>
+            </v-tooltip>
           </template>
           <v-list>
-            <v-list-item v-for="category in categories" :key="category.title">
-              <v-list-item-title>{{ category.title }}</v-list-item-title>
+            <v-list-item>
+              <v-btn outlined color="white" large>
+                <span class="pa-1 black--text"> SignIn </span>
+              </v-btn>
+            </v-list-item>
+            <v-list-item>
+              <v-btn outlined color="green" large>
+                <span class="pa-1 white--text"> Login </span>
+              </v-btn>
             </v-list-item>
           </v-list>
         </v-menu>
-        <div v-if="$auth.loggedIn">
-          <v-btn dark large color="transparent">
-            <v-icon> mdi-account-cowboy-hat </v-icon>
-          </v-btn>
-        </div>
-        <div v-else>
-          <v-btn fab large color="transparent">
-            <v-icon color="white">mdi-shopping-outline</v-icon>
-            <span v-for="item in Cart" :key="item.Product.id">
-              {{ item.Product.title }}
-            </span>
-          </v-btn>
-          <v-menu transition="slide-y-transition" bottom>
-            <template v-slot:activator="{ on: menu, attrs }">
-              <v-tooltip bottom>
-                <template v-slot:activator="{ on: tooltip }">
-                  <v-btn
-                    v-bind="attrs"
-                    dark
-                    large
-                    fab
-                    color="transparent"
-                    v-on="{ ...tooltip, ...menu }"
-                  >
-                    <v-icon large>mdi-login-variant</v-icon>
-                  </v-btn>
-                </template>
-                <span>Join Us!</span>
-              </v-tooltip>
-            </template>
-            <v-list>
-              <v-list-item>
-                <v-btn outlined color="white" large>
-                  <span class="pa-1 black--text"> SignIn </span>
-                </v-btn>
-              </v-list-item>
-              <v-list-item>
-                <v-btn outlined color="green" large>
-                  <span class="pa-1 white--text"> Login </span>
-                </v-btn>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </div>
-        <!-- <v-sheet
+      </div>
+      <!-- <v-sheet
       id="scrolling-techniques-5"
       class="overflow-y-auto"
       max-height="600"
     >
     </v-sheet> -->
-      </v-app-bar>
-    </Box>
+    </v-app-bar>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import posed from 'vue-pose'
 export default {
-  components: {
-    Box: posed.div({
-      visible: { opacity: 1 },
-      hidden: { opacity: 0 },
-    }),
-    Sidebar: posed.ul({
-      visible: {
-        x: 0,
-        beforeChildren: true,
-        staggerChildren: 50,
-      },
-      hidden: { x: '-100%', afterChildren: true },
-      category: posed.li({
-        visible: { opacity: 1, y: 0 },
-        hidden: { opacity: 0, y: 20 },
-      }),
-    }),
-  },
   data() {
     return {
       categories: [],

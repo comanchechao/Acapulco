@@ -1,10 +1,13 @@
 const express = require('express')
 const consola = require('consola')
 const mongoose = require('mongoose')
-const {
+
+import {
   Nuxt,
   Builder
-} = require('nuxt')
+} from 'nuxt'
+import config from '../nuxt.config.js'
+
 const app = express()
 // Connecting to database 
 
@@ -15,38 +18,28 @@ mongoose.connect('mongodb+srv://kesler:payamone@cluster0.yhv0k.mongodb.net/Acapu
 
 
 //Middleware api express routes
-const serverAPI = require('../middleware/api')
-app.use(serverAPI)
+const serverAPI = require('../middleware/api/index')
+app.use('/api', serverAPI);
+// Init Nuxt.js
+const nuxt = new Nuxt(config)
 
-// Import and Set Nuxt.js options
-const config = require('../nuxt.config.js')
-config.dev = process.env.NODE_ENV !== 'production'
-
-async function start() {
-  // Init Nuxt.js
-  const nuxt = new Nuxt(config)
-
-  const {
-    host,
-    port
-  } = nuxt.options.server
-
-  // Build only in dev mode
-  if (config.dev) {
-    const builder = new Builder(nuxt)
-    await builder.build()
-  } else {
-    await nuxt.ready()
-  }
-
-  // Give nuxt middleware to express
-  app.use(nuxt.render)
-
-  // Listen the server
-  app.listen(port, host)
-  consola.ready({
-    message: `Server listening on http://${host}:${port}`,
-    badge: true
-  })
+// Build only in dev mode
+if (config.dev) {
+  const builder = new Builder(nuxt)
+  builder.build()
 }
-start()
+
+// Give nuxt middleware to express
+app.use(nuxt.render)
+
+// Give nuxt middleware to express
+app.use(nuxt.render)
+
+// Listen the server
+app.listen(process.env.PORT, process.env.HOST, err => {
+  if (err) {
+    console.log(err)
+  }
+  console.log(`Server listening on http://${process.env.HOST}:${process.env.PORT}`)
+})
+export default app

@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-main>
     <v-container id="main">
       <div class="pa-0 ma-0" :class="{ animate__zoomOut: CartDisplay }">
         <h1
@@ -19,7 +19,7 @@
         ></v-img> -->
       </div>
     </v-container>
-  </v-content>
+  </v-main>
 </template>
 <!-- <div class="">
 

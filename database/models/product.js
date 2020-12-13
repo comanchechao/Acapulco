@@ -8,4 +8,6 @@ import productSchema from '@/database/schemas/product'
 productSchema.plugin(mongoosePaginator)
 
 // The first param is the collection name this model represents
-module.exports = mongoose.model('Product', productSchema)
+const Product = mongoose.model('Product', productSchema)
+
+module.exports = Product
