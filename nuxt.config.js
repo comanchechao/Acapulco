@@ -98,7 +98,5 @@ export default {
       })
     }
   },
-  serverMiddleware: [
-    '@/server/middleware/api/index.js',
-  ]
+  serverMiddleware: ['@/server/middleware/api/index.js'],
 }
