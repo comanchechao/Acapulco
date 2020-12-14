@@ -99,6 +99,6 @@ export default {
     }
   },
   serverMiddleware: [
-    '@/server/index.js',
+    '@/server/middleware/api/index.js',
   ]
 }
