@@ -12,4 +12,4 @@ productCategorySchema.index({
 
 // The first param is the collection name this model represents
 const ProductCategory = mongoose.model('productCategory', productCategorySchema);
-module.exports = ProductCategory;
+module.exports = ProductCategory

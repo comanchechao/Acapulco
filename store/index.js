@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import axios from 'axios'
+import { auth } from '@/plugins/firebase'
 
 export const store = new Vuex.Store({
   state: {
@@ -9,8 +10,12 @@ export const store = new Vuex.Store({
     Product: null,
     Cart: [],
     CartDisplay: false,
+    user: null,
   },
   mutations: {
+    setAuthUser(state, user) {
+      state.user = user
+    },
     setProducts(state, Products) {
       state.Products = Products
     },
@@ -50,6 +55,82 @@ export const store = new Vuex.Store({
   //   },
   // },
   actions: {
+    SET_AUTH_USER: async ({ commit }) => {
+      try {
+        const user = auth().currentUser
+        if (user) {
+          await commit('setAuthUser', {
+            id: user.uid,
+            email: user.email,
+            name: user.displayName,
+          })
+        } else {
+          commit('setAuthUser', null)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    CREATE_USER_WITH_EMAIL_AND_PASSWORD: async (_, data) => {
+      try {
+        const { email, displayName, password } = data
+        const response = await auth().createUserWithEmailAndPassword(
+          email,
+          password
+        )
+        if (response.user) {
+          await response.user.updateProfile({ displayName })
+          return Promise.resolve()
+        }
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    },
+    SIGN_IN_WITH_EMAIL_AND_PASSWORD: async (_, data) => {
+      try {
+        const { email, password } = data
+        const response = await auth().signInWithEmailAndPassword(
+          email,
+          password
+        )
+        if (response.user) {
+          return Promise.resolve()
+        }
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    },
+    SIGN_OUT: async () => {
+      try {
+        return await auth()
+          .signOut()
+          .then(() => {
+            return Promise.resolve()
+          })
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    },
+    RESET_PASSWORD: async () => {
+      try {
+        const user = auth().currentUser
+        return await auth()
+          .sendPasswordResetEmail(user.email)
+          .then(() => {
+            return Promise.resolve()
+          })
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    },
+    DELETE_USER: async () => {
+      try {
+        const user = auth().currentUser
+        return await user.delete().then(() => Promise.resolve())
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    },
     getProducts({ commit }) {
       axios.get('http://127.0.0.1:8000/api/store/').then((response) => {
         commit('setProducts', response.data)
@@ -63,29 +144,11 @@ export const store = new Vuex.Store({
         commit('setProduct', response.data)
       })
     },
-    // userLogout(context){
-    //   if(context.getters.loggedIn){
-    //     context.commit('destroyToken')
-    //   }
-    // },
-    // userLogin(context, usercredentials) {
-    //   return new Promise((resolve) => {
-    //     getAPI
-    //       .post("/api/token/", {
-    //         username: usercredentials.username,
-    //         password: usercredentials.password,
-    //       })
-    //       .then((response) => {
-    //         context.commit("updateStorage", {
-    //           access: response.data.access,
-    //           refresh: response.data.refresh,
-    //         });
-    //         resolve();
-    //       });
-    //   });
-    // },
   },
   getters: {
+    user: (state) => {
+      return state.user
+    },
     cartItemCount(state) {
       return state.Cart.length
     },

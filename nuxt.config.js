@@ -3,45 +3,52 @@ const path = require('path')
 
 require('dotenv').config({
   silent: true,
-  path: process.env.NODE_ENV === 'production' ? '.prod.env' : '.dev.env'
+  path: process.env.NODE_ENV === 'production' ? '.prod.env' : '.dev.env',
 })
 
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
+    script: [
+      {
+        src:
+          'https://www.gstatic.com/firebasejs/[VERSION-NUMBER]/firebase-app.js',
+      },
+    ],
     titleTemplate: '%s - Acapulco',
     title: 'Acapulco',
-    meta: [{
-        charset: 'utf-8'
+    meta: [
+      {
+        charset: 'utf-8',
       },
       {
         name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
+        content: 'width=device-width, initial-scale=1',
       },
       {
         hid: 'description',
         name: 'description',
-        content: ''
+        content: '',
       },
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/sketch-1605558670823.ico'
-    }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/sketch-1605558670823.ico',
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
   env: {
     HOST: process.env.HOST,
-    PORT: process.env.PORT
+    PORT: process.env.PORT,
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    '~plugins/animate.css.js'
-  ],
+  plugins: ['~plugins/animate.css.js']['~plugins/firebase.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -93,10 +100,10 @@ export default {
         loader: 'eslint-loader',
         exclude: /(node_modules)/,
         options: {
-          fix: true
-        }
+          fix: true,
+        },
       })
-    }
+    },
   },
-  serverMiddleware: ['@/server/middleware/api/index.js'],
+  serverMiddleware: ['@/server/index.js'],
 }

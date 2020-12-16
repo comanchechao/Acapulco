@@ -1,6 +1,6 @@
-const {
-  Router
-} = require('express')
+import app from '~/server'
+
+const { Router } = require('express')
 
 const router = Router()
 
