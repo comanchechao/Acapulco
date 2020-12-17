@@ -4,6 +4,9 @@ const router = express.Router()
 const Order = require('../../database/models/order')
 const Product = require('../../database/models/product')
 
+
+
+// populate method enables product properties in side "api/order.js"
 router.get('/', (req, res, next) => {
   Order.find()
     .populate('product', 'title price')
