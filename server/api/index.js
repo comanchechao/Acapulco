@@ -1,11 +1,10 @@
-import app from '~/server'
+const express = require('express')
+const router = express.Router()
 
-const { Router } = require('express')
 
-const router = Router()
 
 router.get('/', (req, res) => {
   console.log('soofsit?')
 })
 
-export default router
+module.exports = router
