@@ -3,7 +3,7 @@
     <v-container id="main">
       <div class="pa-0 ma-0" :class="{ animate__zoomOut: CartDisplay }">
         <h1
-          class="acapulco animate__animated animate__jackInTheBox animate__delay-1s"
+          class="text-center acapulco animate__animated animate__jackInTheBox animate__delay-1s"
         >
           Acapulco Design
         </h1>

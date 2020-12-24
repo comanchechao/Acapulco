@@ -1,7 +1,6 @@
 import Vuex from 'vuex'
 import axios from 'axios'
-import { auth } from '@/plugins/firebase'
-
+import * as auth from '@nuxtjs/firebase'
 export const store = new Vuex.Store({
   state: {
     accessToken: null,
@@ -132,7 +131,7 @@ export const store = new Vuex.Store({
       }
     },
     getProducts({ commit }) {
-      axios.get('http://127.0.0.1:8000/api/store/').then((response) => {
+      axios.get('http://127.0.0.1:3000/api/store/').then((response) => {
         commit('setProducts', response.data)
       })
     },

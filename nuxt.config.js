@@ -1,21 +1,18 @@
+// import path from 'path'
 import colors from 'vuetify/es5/util/colors'
-const path = require('path')
-
 require('dotenv').config({
   silent: true,
   path: process.env.NODE_ENV === 'production' ? '.prod.env' : '.dev.env',
 })
 
 export default {
+  // publicRuntimeConfig: {
+  //   baseURL: process.env.BASE_URL || 'localhost:3000',
+  // },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    script: [
-      {
-        src:
-          'https://www.gstatic.com/firebasejs/[VERSION-NUMBER]/firebase-app.js',
-      },
-    ],
-    titleTemplate: '%s - Acapulco',
+    script: [{}],
+    titleTemplate: '%s - Limited Custom Handmade Merchendise',
     title: 'Acapulco',
     meta: [
       {
@@ -41,14 +38,14 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['@/assets/css/hover.css'],
   env: {
-    HOST: process.env.HOST,
-    PORT: process.env.PORT,
+    PORT: process.env.PORT || '127.0.0.1',
+    HOST: process.env.HOST || '3000',
   },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~plugins/animate.css.js']['~plugins/firebase.js'],
+  plugins: ['~plugins/animate.css.js'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -63,10 +60,34 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/axios
-
-    '@nuxtjs/axios',
-    '@nuxtjs/auth',
+    [
+      '@nuxtjs/dotenv',
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyC77kzTcPi7rJsGKgmH0j62YYj1PUX_uWE',
+          authDomain: 'acapulco-e86b9.firebaseapp.com',
+          projectId: 'acapulco-e86b9',
+          storageBucket: 'acapulco-e86b9.appspot.com',
+          messagingSenderId: '652596111912',
+          appId: '1:652596111912:web:a64d3ae42f255f2944a31d',
+          measurementId: 'G-15G0W8Q4G2',
+        },
+        services: {
+          auth: {
+            persistence: 'local',
+            initialize: {
+              onAuthStateChangedMutation: null,
+              onAuthStateChangedAction: 'SET_AUTH_USER',
+            },
+            emulatorPort: 3000,
+            emulatorHost: 'http://localhost',
+          },
+        },
+      },
+      '@nuxtjs/axios',
+      '@nuxtjs/auth',
+    ],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)

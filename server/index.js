@@ -29,7 +29,7 @@ mongoose
 // Middleware api express routes
 // app.use('/api/auth', authRoutes)
 app.use('/api', apiRoutes)
-app.use('/api/products' , productsRoutes)
+app.use('/api/products', productsRoutes)
 app.use('/api/orders', orderRoutes)
 // Init Nuxt.js
 const nuxt = new Nuxt(config)
@@ -52,6 +52,5 @@ app.listen(process.env.PORT, process.env.HOST, (err) => {
     `Server listening on http://${process.env.HOST}:${process.env.PORT}`
   )
 })
-
 
 module.exports = app

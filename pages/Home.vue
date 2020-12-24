@@ -5,7 +5,7 @@
       class="animate__animated animate__rollIn animate__delay-0.5s"
     />
     <v-spacer></v-spacer>
-    <v-content>
+    <v-main>
       <v-container>
         <component
           :is="component"
@@ -22,13 +22,11 @@
           >
         </div>
       </v-container>
+    </v-main>
 
-      <!-- <MiniCart /> -->
-    </v-content>
-    <!-- <MainPage /> -->
-    <ProductList />
-    <!-- <MiniCart /> -->
-    <!-- <Footer /> -->
+    <!-- <ProductList /> -->
+
+    <Footer />
   </v-app>
 </template>
 
@@ -36,7 +34,7 @@
 // @ is an alias to /src
 import Navbar from '@/layouts/Navbar.vue'
 import MainPage from '@/layouts/MainPage.vue'
-import ProductList from '@/components/ProductList.vue'
+// import ProductList from '@/components/ProductList.vue'
 // import Footer from '@/layouts/Footer.vue'
 // import MiniCart from '../components/MiniCart.vue'
 
@@ -45,7 +43,7 @@ export default {
   components: {
     Navbar,
     MainPage,
-    ProductList,
+    // ProductList,
     // Footer,
     // MiniCart,
   },

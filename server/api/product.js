@@ -3,7 +3,7 @@ const router = express.Router()
 
 const Product = require('../../database/models/product')
 
-//this vesion will have some changes to in image property this is more challenging that django man
+// this vesion will have some changes to in image property this is more challenging that django man
 router.get('/', (req, res, next) => {
   Product.find()
     .then((result) => {

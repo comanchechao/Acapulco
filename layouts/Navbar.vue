@@ -70,12 +70,12 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <div v-if="$auth.loggedIn">
+      <div>
         <v-btn dark large color="transparent">
           <v-icon> mdi-account-cowboy-hat </v-icon>
         </v-btn>
       </div>
-      <div v-else>
+      <div>
         <v-btn fab large color="transparent">
           <v-icon color="white">mdi-shopping-outline</v-icon>
           <span v-for="item in Cart" :key="item.Product.id">
@@ -102,15 +102,15 @@
           </template>
           <v-list>
             <v-list-item>
-              <v-btn outlined color="white" large>
-                <span class="pa-1 black--text"> SignIn </span>
-              </v-btn>
+              <SignUpDialog />
             </v-list-item>
             <v-list-item>
-              <v-btn outlined color="green" large>
-                <span class="pa-1 white--text"> Login </span>
-              </v-btn>
-            </v-list-item>
+              <v-btn outlined color="transparent" large>
+                <span class="activator hvr-fade pa-1 white--text">
+                  <NuxtLink to="/Login"> Login</NuxtLink>
+                </span>
+              </v-btn></v-list-item
+            >
           </v-list>
         </v-menu>
       </div>
